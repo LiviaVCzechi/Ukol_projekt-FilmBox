@@ -103,4 +103,93 @@ const filmy = [
 			'Na zámek v podhůří Krkonoš přijíždí jeho nový majitel Štěpán se svojí snoubenkou, krásnou komtesou Blankou, a mladším bratrem Adamem. Cestou kočár nešťastně srazí kolemjdoucí dívku, Adam jí pomůže a ona se do něj zamiluje. Na zámku Adam objeví starou vlašskou knihu, která by měla obsahovat cestu k pokladům. Tajemné značky vlašské knihy však nedokáže vyluštit ani národopisec Jiráček, který v kraji sbírá pověsti a nevychází z údivu nad tím, že zdejší lidé stále věří v Krakonoše. Na zámku se objeví záhadný cizinec a nabídne Štěpánovi, že jej k pokladu za určitých podmínek dovede. Výprava do hor může začít. Naplní se Liduščina láska k Adamovi? Jakou záhadu skrývá starý obraz na zámku Hůrka a co strašlivého se v horách kdysi odehrálo? A kdo je vlastně Krakonoš a jaké je jeho největší tajemství? (csfd.cz, Česká televize)',
 		premiera: '2022-12-24',
 	},
+	{
+		id: 'constantine',
+		nazev: 'Constantine',
+		plakat: {
+			url: 'https://1iq.cz/img/u98QS/R7B6r.png',
+			sirka: 420,
+			vyska: 592,
+		},
+		ochutnavka: 'John Constantine je největší badass, co po světě chodí',
+		popis:
+			'John Constantine od malička vidí svět takový, jaký opravdu je. Má schopnost rozeznat anděly a démony skryté pod lidským vzezřením. Tím, že se dříve snažil spáchat sebevraždu a nežil zrovna životem světce, si přímo koupil vstupenku do pekla. Když jeho plíce začnou vypovídat službu kvůli neustálému kouření cigaret, dozví se od lékařů, že zemře mlád a bude to brzy. Dá se dohromady s nedůvěřivou policistkou Angelou Dodsonovou, aby společně vyřešili záhadnou sebevraždu jejího dvojčete. Pátrání je přivede do světa andělů a démonů, který existuje těsně pod povrchem Los Angeles. Stanou se zajatci sledu katastrofických událostí z jiného světa a pokusí se najít vlastní klid za jakoukoli cenu. (Nova Cinema)',
+		premiera: '2005-04-07',
+	},
 ]
+
+let hledanyFilm = window.location.hash.substring(1)
+let found = filmy.find((id) => id.nazev === hledanyFilm);
+
+if (found) {
+    
+	
+  let nazevFilm = document.querySelector('#detail-filmu .card-title');
+  let popisFilm = document.querySelector('#detail-filmu .card-text');
+  let plakatFilm = document.querySelector('#detail-filmu .img-fluid rounded-start');
+
+    
+    nazevFilm.textContent = found.nazev;
+    popisFilm.textContent = found.popis;
+    plakatFilm.src = found.plakat.url;
+
+}
+
+
+
+
+
+
+
+
+let premiera = '2022-12-24';
+let premieraDayjs = dayjs(premiera);
+let formatovanaPremiera = premieraDayjs.format('D. M. YYYY');
+
+
+document.getElementById('premiera').innerHTML = `Premiéra <strong>${formatovanaPremiera}</strong>`;
+
+
+let dnes = dayjs();
+let rozdilDni = premieraDayjs.diff(dnes, 'days');
+
+
+if (rozdilDni > 0) {
+    document.getElementById('premiera').innerHTML += `<br>Premiéra bude za ${rozdilDni} dní.`;
+} else if (rozdilDni < 0) {
+    document.getElementById('premiera').innerHTML += `<br>Od premiéry uběhlo ${-rozdilDni} dní.`;
+} else {
+    document.getElementById('premiera').innerHTML += `<br>Premiéra je dnes.`;
+}
+
+
+
+let lastClickedStar = 0;
+
+function highlightStars(num) {
+    const stars = document.querySelectorAll('.fa-star');
+    stars.forEach((star, index) => {
+        if (index < num) {
+            star.classList.remove('far');
+            star.classList.add('fas');
+        } else {
+            star.classList.remove('fas');
+            star.classList.add('far');
+        }
+    });
+}
+
+document.querySelectorAll('.fa-star').forEach((star, index) => {
+    star.addEventListener('click', () => {
+        lastClickedStar = index + 1;
+        highlightStars(lastClickedStar);
+    });
+
+    star.addEventListener('mouseenter', () => {
+        highlightStars(index + 1);
+    });
+
+    star.addEventListener('mouseleave', () => {
+        highlightStars(lastClickedStar);
+    });
+});

@@ -4,14 +4,17 @@ const filmy = [
 		nazev: 'Pelíšky',
 		plakat: {
 			url: 'https://image.pmgstatic.com/cache/resized/w663/files/images/film/posters/165/059/165059101_56d52a.jpg',
-			sirka: 663,
-			vyska: 909,
+			sirka: 780,
+			vyska: 520,
 		},
 		ochutnavka: 'České drama z období 1968.',
 		popis:
 			'A je tu zpět jedna z nejúspěšnějších českých filmových komedií od renomovaných tvůrců - režiséra J. Hřebejka a scenáristy P. Jarchovského s řadou skvělých herců. Vraťme se tedy s oblíbenými postavami k rodinným rituálům, láskám a trapasům odehrávajícím se na sklonku šedesátých let minulého století v jedné pražské čtvrti. Jemná poetika a humorná nadsázka jsou charakteristické pro vyprávění životních osudů tří generací mužů a žen ve zvláštním období našich dějin v roce 1968… V jedné dvoupatrové vile tu žijí dvě rodiny - Šebkovi a Krausovi. Otec Šebek (M. Donutil), prostoduchý, ale dobrácký důstojník z povolání, je zastáncem panujícího režimu a stejně vehementně obhajuje i vlastní neomylnost v roli hlavy rodiny. Elegantní otec Kraus (J. Kodet), bývalý odbojář s trpkou válečnou zkušeností, je naopak zarytým opozičníkem. Také on je přesvědčený o tom, že má za všech okolností pravdu - není proto divu, že se tihle dva nemají zrovna v lásce. Jejich děti - gymnazista Michal (M. Beran) a jeho spolužačka Jindřiška (K. Nováková) - spolu vycházejí docela dobře. I když Michal by byl rád, kdyby ho jeho sousedka brala trochu víc na vědomí. Ta má ale oči pro jiného. Nezbývá mu tedy nic jiného, než aby smutně přihlížel, jak mu jeho první milostné body krade spolužák Elien (O. Brousek). U Šebků a Krausů se zatím střídají rodinné návštěvy, ve vší obřadnosti se tu slaví Vánoce, svatba i nečekaný, bolestný pohřeb. Do zabydlených domácností vtrhnou i některé novodobé vymoženosti v podobě umělohmotných lžiček, nerozbitných sklenic i podivných her pro statečné pionýry. Mládež zatím pokukuje po lákadlech světa kapitalismu a snaží se žít svůj vlastní, na rodičovských autoritách a "velké" historii nezávislý život. V soukromí rodinných pelíšků se tak čas od času odehrají malá dramata názorů a vztahů, která se v paměti jejich účastníků otisknou už nejspíš navždy… (csfd.cz, Česká televize)',
 		premiera: '2019-04-08',
 	},
+	
+	
+	
 	{
 		id: 'promlceno',
 		nazev: 'Promlčeno',
@@ -103,4 +106,44 @@ const filmy = [
 			'Na zámek v podhůří Krkonoš přijíždí jeho nový majitel Štěpán se svojí snoubenkou, krásnou komtesou Blankou, a mladším bratrem Adamem. Cestou kočár nešťastně srazí kolemjdoucí dívku, Adam jí pomůže a ona se do něj zamiluje. Na zámku Adam objeví starou vlašskou knihu, která by měla obsahovat cestu k pokladům. Tajemné značky vlašské knihy však nedokáže vyluštit ani národopisec Jiráček, který v kraji sbírá pověsti a nevychází z údivu nad tím, že zdejší lidé stále věří v Krakonoše. Na zámku se objeví záhadný cizinec a nabídne Štěpánovi, že jej k pokladu za určitých podmínek dovede. Výprava do hor může začít. Naplní se Liduščina láska k Adamovi? Jakou záhadu skrývá starý obraz na zámku Hůrka a co strašlivého se v horách kdysi odehrálo? A kdo je vlastně Krakonoš a jaké je jeho největší tajemství? (csfd.cz, Česká televize)',
 		premiera: '2022-12-24',
 	},
+	{
+		id: 'constantine',
+		nazev: 'Constantine',
+		plakat: {
+			url: 'https://1iq.cz/img/u98QS/R7B6r.png',
+			sirka: 420,
+			vyska: 592,
+		},
+		ochutnavka: 'John Constantine je největší badass, co po světě chodí',
+		popis:
+			'John Constantine od malička vidí svět takový, jaký opravdu je. Má schopnost rozeznat anděly a démony skryté pod lidským vzezřením. Tím, že se dříve snažil spáchat sebevraždu a nežil zrovna životem světce, si přímo koupil vstupenku do pekla. Když jeho plíce začnou vypovídat službu kvůli neustálému kouření cigaret, dozví se od lékařů, že zemře mlád a bude to brzy. Dá se dohromady s nedůvěřivou policistkou Angelou Dodsonovou, aby společně vyřešili záhadnou sebevraždu jejího dvojčete. Pátrání je přivede do světa andělů a démonů, který existuje těsně pod povrchem Los Angeles. Stanou se zajatci sledu katastrofických událostí z jiného světa a pokusí se najít vlastní klid za jakoukoli cenu. (Nova Cinema)',
+		premiera: '2005-04-07',
+	},
 ]
+
+const seznamFilmu = document.querySelector('#seznam-filmu');
+seznamFilmu.innerHTML = '';
+
+for (let i=0; i<filmy.length; i++) {
+	let film = `
+	  <div class="col">
+		<div class="card">
+		  <img
+		    src=${filmy[i].plakat.url}
+			width=
+			height=
+			class="card-img-top"
+			alt="plakát"
+		  />
+		  <div class="card-body">
+			<h5 class="card-title">${filmy[i].nazev}</h5>
+			<p class="card-text">${filmy[i].popis}</p>
+			<a href="film.html" class="btn btn-primary">Přehrát</a>
+		  </div>
+		</div>
+	  </div>
+	`;
+  
+	seznamFilmu.innerHTML += film;
+}
+
